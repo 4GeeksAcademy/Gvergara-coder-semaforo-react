@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-            
+	const [color, setColor] = useState("red");
+	const colors = ["red", "yellow", "green"]
+	const changeColorRandom = () =>{
+		const indeRandom = Math.floor(Math.random() * colors.length);
+		setColor(colors[indeRandom])
+	}
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+
+
+	return (
+
+		<div className="traffict-light container">
+			<div className="header">
+
+				<div className="traffict-header">
+					<div className={`red light ${color === "red" ? "glow" : " "}`}
+						onClick={() => { setColor("red") }}>
+
+					</div>
+					<div className={`yellow light ${color === "yellow" ? "glow" : " "}`}
+						onClick={() => { setColor("yellow") }}>
+
+					</div>
+					<div className={`green light ${color === "green" ? "glow" : " "}`}
+						onClick={() => { setColor("green") }}>
+					</div>
+
+				</div>
+				<button onClick={changeColorRandom}>Cambiar Color</button>
+			</div>
 		</div>
 	);
 };
